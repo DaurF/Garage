@@ -28,7 +28,7 @@ public class Application
             System.out.print(ANSI_GREEN + "Welcome to the garage!" + ANSI_RESET);
             System.out.println(" **");
             System.out.println("*****************************************");
-            System.out.println("** 1. Get a list of all medicines    **");
+            System.out.println("** 1. Get a list of all cars         **");
             System.out.println("** 2. Get a car by id                **");
             System.out.println("** 3. Add car                        **");
             System.out.println("** 0. Exit                           **");
