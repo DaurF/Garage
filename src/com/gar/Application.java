@@ -88,7 +88,7 @@ public class Application
     {
         System.out.println("Enter car name: ");
         String car_name = sc.next();
-        System.out.println("Enter car_model: ");
+        System.out.println("Enter car model: ");
         String car_model = sc.next();
         System.out.println("Enter release year: ");
         int release_year = sc.nextInt();
@@ -98,7 +98,7 @@ public class Application
         String car_color = sc.next();
         System.out.println("Enter steering wheel: ");
         String steering_wheel = sc.next();
-        System.out.println("Enter price");
+        System.out.println("Enter price: ");
         int price = sc.nextInt();
 
         String response = controller.createCar(car_name, car_model, release_year, mileage, car_color, steering_wheel, price);
