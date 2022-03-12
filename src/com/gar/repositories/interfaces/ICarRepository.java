@@ -9,4 +9,5 @@ public interface ICarRepository
     boolean createCar(Car car);
     Car getCar(int id);
     List<Car> getAllCars();
+    boolean removeCar(int id);
 }

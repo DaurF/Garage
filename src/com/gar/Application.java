@@ -25,18 +25,19 @@ public class Application
         {
             System.out.println("*****************************************");
             System.out.print("** ");
-            System.out.print(ANSI_GREEN + "Welcome to the garage!" + ANSI_RESET);
-            System.out.println(" **");
+            System.out.print(ANSI_GREEN + "      Welcome to the garage!" + ANSI_RESET);
+            System.out.println("        **");
             System.out.println("*****************************************");
-            System.out.println("** 1. Get a list of all cars         **");
-            System.out.println("** 2. Get a car by id                **");
-            System.out.println("** 3. Add car                        **");
-            System.out.println("** 0. Exit                           **");
+            System.out.println("** 1. Get a list of all cars           **");
+            System.out.println("** 2. Get a car by id                  **");
+            System.out.println("** 3. Add car                          **");
+            System.out.println("** 4. Remove car                       **");
+            System.out.println("** 0. Exit                             **");
             System.out.println("*****************************************");
 
             try
             {
-                System.out.println(ANSI_RED + "Select the desired option (1-3):          " + ANSI_RESET);
+                System.out.println(ANSI_RED + "Select the desired option (1-4):          " + ANSI_RESET);
                 int option = sc.nextInt();
                 if(option == 1)
                 {
@@ -49,6 +50,10 @@ public class Application
                 else if(option == 3)
                 {
                     createCarMenu();
+                }
+                else if(option == 4)
+                {
+                    removeCarMenu();
                 }
                 else
                     break;
@@ -81,8 +86,6 @@ public class Application
 
     public void createCarMenu()
     {
-        System.out.println("Please, enter ID: ");
-        int id = sc.nextInt();
         System.out.println("Enter car name: ");
         String car_name = sc.next();
         System.out.println("Enter car_model: ");
@@ -98,7 +101,15 @@ public class Application
         System.out.println("Enter price");
         int price = sc.nextInt();
 
-        String response = controller.createCar(id, car_name, car_model, release_year, mileage, car_color, steering_wheel, price);
+        String response = controller.createCar(car_name, car_model, release_year, mileage, car_color, steering_wheel, price);
         System.out.println(response);
+    }
+
+    public void removeCarMenu()
+    {
+        System.out.println("Please, enter ID: ");
+        int id = sc.nextInt();
+        controller.removeCar(id);
+        System.out.println(id + " has been removed!");
     }
 }

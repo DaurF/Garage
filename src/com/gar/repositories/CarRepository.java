@@ -23,17 +23,16 @@ public class CarRepository implements ICarRepository {
         try
         {
             con = db.getConnection();
-            String sql = "INSERT INTO garagetable(id, car_name, car_model, release_year, mileage, car_color, steering_wheel, price) VALUES(?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO garagetable(car_name, car_model, release_year, mileage, car_color, steering_wheel, price) VALUES(?,?,?,?,?,?,?)";
             PreparedStatement st = con.prepareStatement(sql);
 
-            st.setInt(1, car.getId());
-            st.setString(2, car.getName());
-            st.setString(3, car.getModel());
-            st.setInt(4, car.getYear());
-            st.setInt(5, car.getMileage());
-            st.setString(6, car.getColor());
-            st.setString(7, car.getWheel());
-            st.setInt(8, car.getPrice());
+            st.setString(1, car.getName());
+            st.setString(2, car.getModel());
+            st.setInt(3, car.getYear());
+            st.setInt(4, car.getMileage());
+            st.setString(5, car.getColor());
+            st.setString(6, car.getWheel());
+            st.setInt(7, car.getPrice());
 
             st.execute();
             return true;
@@ -130,5 +129,35 @@ public class CarRepository implements ICarRepository {
         }
 
         return null;
+    }
+
+    @Override
+    public boolean removeCar(int id)
+    {
+        Connection con = null;
+        try
+        {
+            con = db.getConnection();
+            String sql = "DELETE FROM garagetable WHERE ID=?";
+
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        } finally {
+            try
+            {
+                con.close();
+            } catch (SQLException throwables)
+            {
+                throwables.printStackTrace();
+            }
+        }
+        return false;
     }
 }
